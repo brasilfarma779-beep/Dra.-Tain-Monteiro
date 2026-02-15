@@ -1,0 +1,8 @@
+{
+  "name": "Dra. Tainá Monteiro - Landing Page",
+  "description": "Dra. Tainá Monteiro, cirurgiã-dentista ",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
