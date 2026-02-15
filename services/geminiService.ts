@@ -1,14 +1,24 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-const API_KEY = process.env.API_KEY || "";
+// Tenta obter a chave de forma segura
+const getApiKey = () => {
+  try {
+    return process.env.API_KEY || "";
+  } catch (e) {
+    return "";
+  }
+};
 
 export const getDentalAdvice = async (userPrompt: string) => {
-  if (!API_KEY) {
-    throw new Error("API Key não configurada");
+  const apiKey = getApiKey();
+  
+  if (!apiKey) {
+    console.warn("API Key não configurada. O assistente virtual não funcionará.");
+    return "Olá! No momento estou em manutenção, mas você pode falar diretamente com nossa equipe pelo WhatsApp clicando no botão verde abaixo!";
   }
 
-  const ai = new GoogleGenAI({ apiKey: API_KEY });
+  const ai = new GoogleGenAI({ apiKey });
   
   try {
     const response = await ai.models.generateContent({

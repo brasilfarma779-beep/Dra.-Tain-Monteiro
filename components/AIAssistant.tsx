@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { getDentalAdvice } from '../services/geminiService';
+import { getDentalAdvice } from '../services/geminiService.ts';
 
 const AIAssistant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +37,6 @@ const AIAssistant: React.FC = () => {
 
   return (
     <div className="fixed bottom-6 left-6 z-40">
-      {/* Trigger Button */}
       <button 
         onClick={() => setIsOpen(!isOpen)}
         className="w-14 h-14 bg-gold text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-105 transition-transform"
@@ -45,7 +44,6 @@ const AIAssistant: React.FC = () => {
         <i className={`fas ${isOpen ? 'fa-times' : 'fa-robot'} text-xl`}></i>
       </button>
 
-      {/* Chat Window */}
       {isOpen && (
         <div className="absolute bottom-20 left-0 w-80 md:w-96 bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden flex flex-col h-[450px] animate-fade-in">
           <div className="gold-gradient p-4 text-white font-bold flex items-center justify-between">
